@@ -35,7 +35,6 @@ class Profile extends Component {
   }
 
   init() {
-    console.log(this.props.params.username)
     this.ref = base.bindToState(this.props.params.username, {
       context: this,
       asArray: true,
