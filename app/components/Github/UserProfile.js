@@ -1,7 +1,20 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class UserProfiles extends React.Component{
-  render(){
+
+const {
+  string,
+  object
+} = PropTypes;
+
+
+class UserProfiles extends Component {
+
+  static propsTypes = {
+    username: string.isRequired,
+    bio: object.isRequired
+  }
+
+  render() {
     return (
       <div>
         <h3> User Profile </h3>
@@ -18,13 +31,9 @@ class UserProfiles extends React.Component{
           {this.props.bio.blog && <li className="list-group-item">Blog: <a href={this.props.bio.blog}> {this.props.bio.blog}</a></li>}
         </ul>
       </div>
-    )
+    );
   }
 };
 
-UserProfiles.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  bio: React.PropTypes.object.isRequired
-}
 
 export default UserProfiles;

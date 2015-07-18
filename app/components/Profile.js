@@ -1,29 +1,48 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 import Repos from './Github/Repos';
 import UserProfile from './Github/UserProfile';
 import Notes from './Notes/Notes';
 import helpers from '../utils/helpers';
 import Rebase from 're-base';
 
+
+const {
+  object
+} = PropTypes;
+
+
 var base = Rebase.createClass('https://github-note-taker.firebaseio.com/');
 
-class Profile extends React.Component{
-  constructor(props){
-    super(props);
+
+class Profile extends Component {
+
+  static contextTypes = {
+    router: object.isRequired
+  };
+
+  static propTypes = {
+    params: object.isRequired
+  };
+
+  constructor(props, context) {
+    super(props, context);
     this.state = {
       notes: [],
       bio: {},
       repos: []
     };
+    this.handleAddNote = this.handleAddNote.bind(this)
   }
-  init(){
-    this.ref = base.bindToState(this.router.getCurrentParams().username, {
+
+  init() {
+    console.log(this.props.params.username)
+    this.ref = base.bindToState(this.props.params.username, {
       context: this,
       asArray: true,
       state: 'notes'
     });
 
-    helpers.getGithubInfo(this.router.getCurrentParams().username)
+    helpers.getGithubInfo(this.props.params.username)
       .then((dataObj) => {
         this.setState({
           bio: dataObj.bio,
@@ -31,26 +50,33 @@ class Profile extends React.Component{
         });
       });
   }
-  componentWillMount(){
+
+  componentWillMount() {
     this.router = this.context.router;
   }
-  componentDidMount(){
+
+  componentDidMount() {
     this.init();
   }
-  componentWillUnmount(){
+
+  componentWillUnmount() {
     base.removeBinding(this.ref);
   }
-  componentWillReceiveProps(){
+
+  componentWillReceiveProps() {
     base.removeBinding(this.ref);
     this.init();
   }
-  handleAddNote(newNote){
-    base.post(this.router.getCurrentParams().username, {
+
+  handleAddNote(newNote) {
+    base.post(this.props.params.username, {
       data: this.state.notes.concat([newNote])
     });
   }
-  render(){
-    var username = this.router.getCurrentParams().username;
+
+  render() {
+    var { username } = this.props.params;
+
     return (
       <div className="row">
         <div className="col-md-4">
@@ -63,15 +89,12 @@ class Profile extends React.Component{
           <Notes
             username={username}
             notes={this.state.notes}
-            addNote={this.handleAddNote.bind(this)} />
+            addNote={this.handleAddNote} />
         </div>
       </div>
     )
   }
 };
 
-Profile.contextTypes = {
-  router: React.PropTypes.func.isRequired
-};
 
 export default Profile;

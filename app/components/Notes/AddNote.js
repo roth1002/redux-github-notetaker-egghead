@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class AddNote extends React.Component{
-  handleSubmit(){
+
+const {
+  string,
+  func
+} = PropTypes;
+
+
+class AddNote extends Component {
+
+  static propsTypes = {
+    username: string.isRequired,
+    addNote: func.isRequired
+  }
+
+  handleSubmit() {
     var newNote = this.refs.note.getDOMNode().value;
     this.refs.note.getDOMNode().value = '';
     this.props.addNote(newNote);
   }
-  render(){
+
+  render() {
     return (
       <div className="input-group">
         <input type="text" className="form-control" ref="note" placeholder="Add New Note" />
@@ -18,9 +32,5 @@ class AddNote extends React.Component{
   }
 };
 
-AddNote.propTypes = {
-  username: React.PropTypes.string.isRequired,
-  addNote: React.PropTypes.func.isRequired
-};
 
 export default AddNote;

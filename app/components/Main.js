@@ -1,9 +1,19 @@
-import React from 'react';
-import { RouteHandler } from 'react-router';
+import React, { Component, PropTypes } from 'react';
 import SearchGithub from './SearchGithub';
 
-class Main extends React.Component{
-  render(){
+
+const {
+  any
+} = PropTypes;
+
+
+class Main extends Component {
+
+  static propsTypes = {
+    children: any.isRequired
+  }
+
+  render() {
     return (
       <div className="main-container">
         <nav className="navbar navbar-default" role="navigation">
@@ -12,11 +22,14 @@ class Main extends React.Component{
           </div>
         </nav>
         <div className="container">
-          <RouteHandler {...this.props}/>
+          {/* this will render the child routes */}
+          {this.props.children}
         </div>
       </div>
     )
   }
+
 };
+
 
 export default Main;

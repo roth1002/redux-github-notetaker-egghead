@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Home extends React.Component{
-  render(){
+
+class Home extends Component {
+
+  render() {
     return (
       <h2 className="text-center">
         Search by Github Username Above
       </h2>
     )
   }
+
 };
+
 
 export default Home;
