@@ -9,7 +9,7 @@ With
 - redux-actions
 - isomorphic-fetch
 
-Todo:
+Todo
 
 - redux-devtools
 - redux-react-router
