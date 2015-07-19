@@ -6,10 +6,12 @@ With
 
 - redux-thunk
 - redux-promise
+- redux-actions
 - isomorphic-fetch
 
 Todo:
 
-- redux-actions
+- redux-devtools
 - redux-react-router
 - radium
+- universal?
