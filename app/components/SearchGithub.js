@@ -29,12 +29,9 @@ class SearchGithub extends Component {
     event.preventDefault();
 
     var { router } = this.context;
-    // var { search } = this.props.actions;
     var { username } = this.state;
 
     this.setState({ username: '' });
-
-    // search(username);
 
     router.transitionTo(`/profile/${username}`);
   }
