@@ -15,7 +15,7 @@ class Repos extends Component {
   }
 
   render() {
-    var repos = this.props.repos.map((repo, index) => {
+    const repos = this.props.repos.map((repo, index) => {
       return (
         <li className="list-group-item" key={index}>
           {repo.html_url && <h4><a href={repo.html_url}>{repo.name}</a></h4>}
@@ -30,9 +30,9 @@ class Repos extends Component {
           {repos}
         </ul>
       </div>
-    )
+    );
   }
-};
+}
 
 
 module.exports = Repos;

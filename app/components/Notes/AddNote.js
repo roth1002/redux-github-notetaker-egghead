@@ -15,7 +15,7 @@ class AddNote extends Component {
   }
 
   handleSubmit() {
-    var newNote = this.refs.note.getDOMNode().value;
+    const newNote = this.refs.note.getDOMNode().value;
     this.refs.note.getDOMNode().value = '';
     this.props.addNote(newNote);
   }
@@ -28,9 +28,10 @@ class AddNote extends Component {
           <button className="btn btn-default" type="button" onClick={this.handleSubmit.bind(this)}> Submit </button>
         </span>
       </div>
-    )
+    );
   }
-};
+
+}
 
 
 export default AddNote;

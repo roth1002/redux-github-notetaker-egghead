@@ -29,10 +29,10 @@ class Main extends Component {
           {React.cloneElement(this.props.children, this.props)}
         </div>
       </div>
-    )
+    );
   }
 
-};
+}
 
 
 export default Main;

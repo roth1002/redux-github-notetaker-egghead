@@ -10,7 +10,7 @@ const {
 } = PropTypes;
 
 
-var base = Rebase.createClass('https://github-note-taker.firebaseio.com/');
+const base = Rebase.createClass('https://github-note-taker.firebaseio.com/');
 
 
 class Profile extends Component {
@@ -29,7 +29,7 @@ class Profile extends Component {
     this.state = {
       notes: []
     };
-    this.handleAddNote = this.handleAddNote.bind(this)
+    this.handleAddNote = this.handleAddNote.bind(this);
   }
 
   init() {
@@ -42,8 +42,8 @@ class Profile extends Component {
 
   componentWillMount() {
     this.router = this.context.router;
-    var { username } = this.props.params;
-    var { search } = this.props.actions;
+    const { username } = this.props.params;
+    const { search } = this.props.actions;
     search(username);
   }
 
@@ -56,9 +56,9 @@ class Profile extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    var { username } = this.props.params;
-    var { username: newUsername } = nextProps.params;
-    var { search } = this.props.actions;
+    const { username } = this.props.params;
+    const { username: newUsername } = nextProps.params;
+    const { search } = this.props.actions;
 
     if (username !== newUsername) {
       search(newUsername);
@@ -75,8 +75,8 @@ class Profile extends Component {
   }
 
   render() {
-    var { username } = this.props.params;
-    var { user } = this.props;
+    const { username } = this.props.params;
+    const { user } = this.props;
 
     return (
       <div className="row">
@@ -93,9 +93,10 @@ class Profile extends Component {
             addNote={this.handleAddNote} />
         </div>
       </div>
-    )
+    );
   }
-};
+
+}
 
 
 export default Profile;

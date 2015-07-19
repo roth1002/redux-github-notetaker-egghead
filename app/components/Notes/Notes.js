@@ -27,7 +27,8 @@ class Notes extends Component {
       </div>
     );
   }
-};
+
+}
 
 
 export default Notes;

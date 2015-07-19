@@ -18,9 +18,9 @@ class NoteTakerApp extends Component {
       <Main actions={actions} user={user}>
         {this.props.children}
       </Main>
-    )
+    );
   }
 
-};
+}
 
 export default NoteTakerApp;

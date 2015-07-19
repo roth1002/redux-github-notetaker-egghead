@@ -13,8 +13,8 @@ class NotesList extends Component {
   }
 
   render() {
-    var notes = this.props.notes.map((note, index) => {
-      return <li className="list-group-item" key={index}> {note} </li>
+    const notes = this.props.notes.map((note, index) => {
+      return (<li className="list-group-item" key={index}> {note} </li>);
     });
 
     return (
@@ -23,7 +23,8 @@ class NotesList extends Component {
       </ul>
     );
   }
-};
+
+}
 
 
 export default NotesList;

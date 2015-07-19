@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 
 
 const {
-  string,
   object
 } = PropTypes;
 
@@ -14,7 +13,7 @@ class UserProfiles extends Component {
   }
 
   render() {
-    var { bio } = this.props;
+    const { bio } = this.props;
     return (
       <div>
         <h3> User Profile </h3>
@@ -33,7 +32,7 @@ class UserProfiles extends Component {
       </div>
     );
   }
-};
+}
 
 
 export default UserProfiles;

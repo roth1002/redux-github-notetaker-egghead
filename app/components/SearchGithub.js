@@ -28,8 +28,8 @@ class SearchGithub extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    var { router } = this.context;
-    var { username } = this.state;
+    const { router } = this.context;
+    const { username } = this.state;
 
     this.setState({ username: '' });
 
@@ -52,10 +52,10 @@ class SearchGithub extends Component {
           </div>
         </form>
       </div>
-    )
+    );
   }
 
-};
+}
 
 
 export default SearchGithub;

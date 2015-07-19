@@ -1,5 +1,5 @@
 import React from 'react';
-import Router, { Route } from 'react-router';
+import { Route } from 'react-router';
 import NoteTakerApp from './containers/NoteTakerApp';
 import * as components from './components';
 
@@ -15,4 +15,4 @@ export default (
     <Route path="/" component={Home} />
     <Route path="profile/:username" component={Profile} />
   </Route>
-)
+);
