@@ -12,9 +12,7 @@ export function user(data) {
 
 export function search(username) {
   return dispatch => {
-    getGithubInfo(username)
-      .then((data) => {
-        dispatch(user(data));
-      })
+     dispatch(getGithubInfo(username)
+      .then(data => user(data)))
   };
 }

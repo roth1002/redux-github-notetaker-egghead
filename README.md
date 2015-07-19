@@ -2,9 +2,14 @@
 
 > Rewrited with Redux.
 
+With
+
+- redux-thunk
+- redux-promise
+- isomorphic-fetch
+
 Todo:
 
-- redux-promise
 - redux-actions
 - redux-react-router
 - radium

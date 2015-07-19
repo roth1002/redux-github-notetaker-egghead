@@ -2,12 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import Router, { Route } from 'react-router';
 import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
+import promise from 'redux-promise';
 import { Provider } from 'react-redux';
 import * as reducers from '../reducers';
 import routes from '../routes';
 
 
-const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(thunk, promise)(createStore);
 const reducer = combineReducers(reducers);
 const store = createStoreWithMiddleware(reducer);
 
