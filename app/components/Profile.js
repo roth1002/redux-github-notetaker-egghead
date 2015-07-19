@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import Repos from './Github/Repos';
 import UserProfile from './Github/UserProfile';
 import Notes from './Notes/Notes';
-import helpers from '../utils/helpers';
 import Rebase from 're-base';
 
 
@@ -21,15 +20,14 @@ class Profile extends Component {
   };
 
   static propTypes = {
+    actions: object,
     params: object.isRequired
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      notes: [],
-      bio: {},
-      repos: []
+      notes: []
     };
     this.handleAddNote = this.handleAddNote.bind(this)
   }
@@ -40,18 +38,13 @@ class Profile extends Component {
       asArray: true,
       state: 'notes'
     });
-
-    helpers.getGithubInfo(this.props.params.username)
-      .then((dataObj) => {
-        this.setState({
-          bio: dataObj.bio,
-          repos: dataObj.repos
-        });
-      });
   }
 
   componentWillMount() {
     this.router = this.context.router;
+    var { username } = this.props.params;
+    var { search } = this.props.actions;
+    search(username);
   }
 
   componentDidMount() {
@@ -62,27 +55,36 @@ class Profile extends Component {
     base.removeBinding(this.ref);
   }
 
-  componentWillReceiveProps() {
+  componentWillReceiveProps(nextProps) {
+    var { username } = this.props.params;
+    var { username: newUsername } = nextProps.params;
+    var { search } = this.props.actions;
+
+    if (username !== newUsername) {
+      search(newUsername);
+    }
+
     base.removeBinding(this.ref);
     this.init();
   }
 
   handleAddNote(newNote) {
     base.post(this.props.params.username, {
-      data: this.state.notes.concat([newNote])
+      data: this.state.notes.concat([ newNote ])
     });
   }
 
   render() {
     var { username } = this.props.params;
+    var { user } = this.props;
 
     return (
       <div className="row">
         <div className="col-md-4">
-          <UserProfile username={username} bio={this.state.bio}/>
+          <UserProfile bio={user && user.bio || {}} />
         </div>
         <div className="col-md-4">
-          <Repos username={username} repos={this.state.repos} />
+          <Repos username={username} repos={user && user.repos || []} />
         </div>
         <div className="col-md-4">
           <Notes

@@ -12,18 +12,35 @@ class SearchGithub extends Component {
     router: object.isRequired
   }
 
-  constructor(props, context) {
-    super(props, context);
-    this.state = {};
-    this.handleSubmit = this.handleSubmit.bind(this);
+  static propsTypes = {
+    actions: object.isRequired
   }
 
-  handleSubmit() {
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      username: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
     var { router } = this.context;
-    var username = this.refs.username.getDOMNode().value;
-    this.refs.username.getDOMNode().value = '';
+    // var { search } = this.props.actions;
+    var { username } = this.state;
+
+    this.setState({ username: '' });
+
+    // search(username);
 
     router.transitionTo(`/profile/${username}`);
+  }
+
+  handleChange(event) {
+    this.setState({ username: event.target.value });
   }
 
   render() {
@@ -31,10 +48,10 @@ class SearchGithub extends Component {
       <div className="col-sm-12">
         <form onSubmit={this.handleSubmit}>
           <div className="form-group col-sm-7">
-            <input type="text" className="form-control" ref="username" />
+            <input type="text" className="form-control" onChange={this.handleChange} />
           </div>
           <div className="form-group col-sm-5">
-            <button type="submit" className="btn btn-block btn-primary">Search Github </button>
+            <button type="submit" className="btn btn-block btn-primary">Search Github</button>
           </div>
         </form>
       </div>
@@ -42,5 +59,6 @@ class SearchGithub extends Component {
   }
 
 };
+
 
 export default SearchGithub;

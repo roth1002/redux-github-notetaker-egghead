@@ -3,6 +3,7 @@ import SearchGithub from './SearchGithub';
 
 
 const {
+  object,
   any
 } = PropTypes;
 
@@ -10,6 +11,8 @@ const {
 class Main extends Component {
 
   static propsTypes = {
+    user: object,
+    actions: object.isRequired,
     children: any.isRequired
   }
 
@@ -18,12 +21,12 @@ class Main extends Component {
       <div className="main-container">
         <nav className="navbar navbar-default" role="navigation">
           <div className="col-sm-7 col-sm-offset-2" style={{marginTop: 15}}>
-            <SearchGithub />
+            <SearchGithub {...this.props} />
           </div>
         </nav>
         <div className="container">
           {/* this will render the child routes */}
-          {this.props.children}
+          {React.cloneElement(this.props.children, this.props)}
         </div>
       </div>
     )

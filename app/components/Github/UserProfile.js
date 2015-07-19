@@ -10,7 +10,6 @@ const {
 class UserProfiles extends Component {
 
   static propsTypes = {
-    username: string.isRequired,
     bio: object.isRequired
   }
 
