@@ -6,4 +6,5 @@ Todo:
 
 - redux-promise
 - redux-actions
+- redux-react-router
 - radium
