@@ -6,7 +6,7 @@ import { getGithubInfo } from '../api/UserAPI';
 export const user = createAction(SEARCH_USER, data => ({ user: data }));
 
 // Same as:
-// function user(data) {
+// export function user(data) {
 //   return {
 //     type: SEARCH_USER,
 //     payload: {
