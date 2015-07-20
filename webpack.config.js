@@ -6,16 +6,19 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
-    "./app/index",
+    './app/index'
   ],
   output: {
     path: path.join(__dirname, 'public'),
-    filename: "bundle.js",
+    filename: 'bundle.js',
     publicPath: '/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new webpack.DefinePlugin({
+      __DEVTOOLS__: true
+    })
   ],
   resolve: {
     extensions: ['', '.js']
