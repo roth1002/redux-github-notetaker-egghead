@@ -13,5 +13,4 @@ With
 Todo
 
 - redux-react-router
-- radium
 - universal?
