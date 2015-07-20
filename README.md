@@ -7,11 +7,11 @@ With
 - redux-thunk
 - redux-promise
 - redux-actions
+- redux-devtools
 - isomorphic-fetch
 
 Todo
 
-- redux-devtools
 - redux-react-router
 - radium
 - universal?
