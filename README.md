@@ -14,3 +14,5 @@ Todo
 
 - redux-react-router
 - universal?
+
+Ctrl + H => Toggle devtools

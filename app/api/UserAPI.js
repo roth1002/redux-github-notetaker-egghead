@@ -1,4 +1,3 @@
-import Promise from 'bluebird';
 import fetch from 'isomorphic-fetch';
 
 
@@ -20,7 +19,8 @@ function getUserInfo(username) {
 const apis = {
   getGithubInfo(username) {
     return Promise.all([ getRepos(username), getUserInfo(username) ])
-      .spread((repos, bio) => {
+      .then((res) => {
+        const [ repos, bio ] = res;
         return {
           repos,
           bio

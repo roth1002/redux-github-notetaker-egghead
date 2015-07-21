@@ -22,6 +22,7 @@
     "babel-runtime": "^5.7.0",
     "bluebird": "^2.9.34",
     "create-action-types": "^1.0.0",
+    "es6-promise": "^2.3.0",
     "firebase": "^2.2.7",
     "isomorphic-fetch": "^2.1.1",
     "re-base": "0.0.11",
@@ -31,7 +32,7 @@
     "reactfire": "^0.4.0",
     "redux": "^1.0.0-rc",
     "redux-actions": "^0.7.0",
-    "redux-devtools": "^0.1.1",
+    "redux-devtools": "^0.1.2",
     "redux-promise": "^0.5.0",
     "redux-thunk": "^0.1.0"
   },
